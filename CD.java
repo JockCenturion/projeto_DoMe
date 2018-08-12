@@ -1,40 +1,37 @@
-package heranca.DoMe;
 
-public class CD extends Item{
-	//Atributos
-	private String artista;
-	private int numFaixas;
-	
-	//Metodos Especiais
-	public CD(String titulo, int tempReprod, String artista, int numFaixas) {
-		super(titulo, tempReprod);
-		this.artista = artista;
-		this.numFaixas = numFaixas;
+/**
+ * A classe CD represa um objeto CD de música. Informaões sobre o CD são armazenadas e podem ser recuperadas.
+ *
+ * @author: jocknaylson
+ * @version: 12.22.2017
+ */
+
+
+
+public class CD extends Item {
+	private String artist;
+	private int tracks;
+
+	public CD(String title, boolean gotIt, int playingTime, String artist, int tracks) {
+		super(title, gotIt, playingTime);
+		this.artist	= artist;
+		this.tracks = tracks;
 	}
-	
-	public String getArtista() {
-		return this.artista;
+
+	public String getArtist() {
+		return artist;
 	}
-	
-	public int getNumFaixas() {
-		return this.numFaixas;
-	}
-	
-	@Override
+
+	@Override 
 	public String toString() {
-		return (super.toString() + "\nArtista: " + this.artista + "\n" +
-				"Numero de Faixas: " + this.numFaixas);
+		return super.toString() + ", " + artist + ", " + tracks;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
-		CD cd = (CD) obj;
-		return (super.equals(obj) && artista.equalsIgnoreCase(cd.artista) && 
-				numFaixas == cd.numFaixas);
+		return (obj instanceof CD) && super.equals(obj) && artist.equalsIgnoreCase(((CD)obj).artist) && 
+			   tracks == ((CD)obj).tracks;
 	}
-	
-	@Override
-	public CD clone() {
-		return new CD(getTitulo(), getTempReprod(), getArtista(), getNumFaixas());
-	}
+
+
 }

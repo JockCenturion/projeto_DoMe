@@ -1,37 +1,30 @@
-package heranca.DoMe;
+/**
+ * A classe DVD representa um Objeto de um DVD de filme
+ *
+ * @author: jocknaylson
+ * @version: 12.22.2017
+ */
+
 
 public class DVD extends Item {
-	//Atributos
-	String diretor;
+	private String director;	
 
-	public DVD(String titulo, int tempReprod, String diretor) {
-		super(titulo, tempReprod);
-		this.diretor = diretor;
+	public DVD(String title, boolean gotIt, int playingTime, String director) {
+		super(title, gotIt, playingTime);
+		this.director = director;
 	}
-	
-	public String getDiretor() {
-		return this.diretor;
+
+	public String getDirector() {
+		return director;
 	}
-	
+
 	@Override
 	public String toString() {
-		return (super.toString() + "\n" + 
-				"Diretor: " + this.diretor);
+		return super.toString() + ", " + director;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
-		DVD dvd = (DVD) obj;
-		return (super.equals(obj) && diretor.equalsIgnoreCase(dvd.diretor));
+		return (obj instanceof DVD) && super.equals(obj) && director.equalsIgnoreCase(((DVD) obj).director);
 	}
-	
-	@Override
-	public DVD clone() {
-		return new DVD(getTitulo(), getTempReprod(), getDiretor());
-	}
-;	
-	
-	
-	
-	
 }
